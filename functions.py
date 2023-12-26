@@ -13,9 +13,10 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Add lead to Airtable
 def create_lead(name, phone):
-  url = "https://api.airtable.com/v0/appM1yx0NobvowCAg/Accelerator%20Leads"
+  url = "https://api.airtable.com/v0/appZrbEHpvn99Ihe2/Accelerator%20Leads"
   headers = {
-      "Authorization": AIRTABLE_API_KEY, # NOTE: When adding your Airtable API key in secrets it must include "Bearer YOURKEY", keeping the Bearer and the space. If you don't add this then it won't work!
+      "Authorization":
+      AIRTABLE_API_KEY,  # NOTE: When adding your Airtable API key in secrets it must include "Bearer YOURKEY", keeping the Bearer and the space. If you don't add this then it won't work!
       "Content-Type": "application/json"
   }
   data = {"records": [{"fields": {"Name": name, "Phone": phone}}]}
@@ -42,7 +43,7 @@ def create_assistant(client):
 
     # To change the knowledge document, modify the file name below to match your document
     # If you want to add multiple files, paste this function into ChatGPT and ask for it to add support for multiple files
-    file = client.files.create(file=open("knowledge.docx", "rb"),
+    file = client.files.create(file=open("shop.docx", "rb"),
                                purpose='assistants')
 
     assistant = client.beta.assistants.create(
